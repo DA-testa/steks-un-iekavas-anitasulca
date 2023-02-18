@@ -28,18 +28,21 @@ def find_mismatch(text):
 
 
 def main():
-    option = input("Choose an option: F (files) or I (input): ")
-    while option not in ['F', 'I']:
-        option = input("Invalid option. Choose F (files) or I (input): ")
-
-    if option == 'F':
+    choice = input("Enter F to choose file or I to choose input: ").strip().upper()
+    text = ""
+    if choice == "F":
         file_name = input("Enter file name: ")
-        with open(file_name, 'r') as file:
-            text = file.read().strip()
-    else:
+        if os.path.isfile(file_name):
+            with open(file_name) as f:
+                text = f.read()
+        else:
+            print("File does not exist.")
+            return
+    elif choice == "I":
         text = input("Enter brackets: ")
-        while text[0] not in '([{':
-            text = text[1:]
+    else:
+        print("Invalid choice.")
+        return
 
     mismatch = find_mismatch(text)
     # Printing answer, write your code here
