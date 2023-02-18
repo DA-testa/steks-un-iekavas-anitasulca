@@ -28,23 +28,28 @@ def find_mismatch(text):
 
 
 def main():
-    letter = input("Choose input method: F (file) or I (manual input)\n")
-
-    if letter == "F":
-        filename = input("Enter file name: ")
-        if not os.path.exists(filename):
-            print("Error: file not found")
-            return
-        with open(filename) as f:
-            text = f.read().strip()
-    elif letter == "I":
-        text = input("Enter brackets:\n")
+    letter = input("Choose (F) to input file path or (I) to input text: ")
+    if letter.strip().lower() == "f":
+        path = input("Enter file path: ")
+        if os.path.exists(path):
+            with open(path, "r") as f:
+                text = f.read()
+                mismatch = find_mismatch(text)
+                print(mismatch)
+        else:
+            print("Invalid file path!")
+    elif letter.strip().lower() == "i":
+        text = input("Enter text: ")
+        mismatch = find_mismatch(text)
+        print(mismatch)
     else:
-        print("Invalid input")
-        return
-    mismatch = find_mismatch(text)
+        print("Invalid choice!")
+
+
+    #text=input()
+    #mismatch = find_mismatch(text)
     # Printing answer, write your code here
-    print(mismatch)
+    #print(mismatch)
 
 
 if __name__ == "__main__":
