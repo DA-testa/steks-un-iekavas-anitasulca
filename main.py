@@ -41,15 +41,13 @@ def main():
     elif letter.strip().lower() == "i":
         text = input("Enter text: ")
         mismatch = find_mismatch(text)
+        # Printing answer, write your code here
         print(mismatch)
     else:
         print("Invalid input")
 
 
-    #text=input()
-    #mismatch = find_mismatch(text)
-    # Printing answer, write your code here
-    #print(mismatch)
+  
 
 
 if __name__ == "__main__":
