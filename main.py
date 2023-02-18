@@ -25,22 +25,23 @@ def find_mismatch(text):
     if opening_brackets_stack:
         return opening_brackets_stack[0].position
     return" Success"
-                
-def input_letter():
-    input_type=input("Choose type of input= F for file OR I for user input:")
-    if input_type.lower()=="f":
-        file_name=input("Enter file name")
-        with open(file_name,"r") as f:
-            return f.read().strip()
-    elif input_type.lower()=="i":
-        return input ("Enter brackets:")
-    else:
-        print("File type not found")
-        exit()
 
 
 def main():
-    text = input()
+    letter = input ("Choose input type- F for file OR I for input:")
+    if letter == "F":
+        filename=input("Enter file name :")
+        if os.path.exists(filename):
+            with open (filename, 'r') as f:
+                text=f.read()
+        else:
+            print ("File not found")
+            return
+    elif letter == "I":
+         text = input("Enter the file name with brackets:")
+    else:
+        print("Invalid letter")
+        return
     mismatch = find_mismatch(text)
     # Printing answer, write your code here
     print(mismatch)
