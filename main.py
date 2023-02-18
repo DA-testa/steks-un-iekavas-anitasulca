@@ -1,7 +1,7 @@
 # python3
 
 from collections import namedtuple
-import os 
+import os
 Bracket = namedtuple("Bracket", ["char", "position"])
 
 
@@ -28,20 +28,20 @@ def find_mismatch(text):
 
 
 def main():
-    letter = input("Choose input type- F for file OR I for user input:")
+    letter = input("Choose input method: F (file) or I (manual input)\n")
+
     if letter == "F":
-        filename = input(" Enter the name of file :")
-        if os.path.exists(filename):
-            with open (filename, 'r') as f:
-                text = f.read()
-        else:
-            print ("File doesn't exist")
+        filename = input("Enter file name: ")
+        if not os.path.exists(filename):
+            print("Error: file not found")
             return
+        with open(filename) as f:
+            text = f.read().strip()
     elif letter == "I":
-        text = input("Enter the text with brackets:")
+        text = input("Enter brackets:\n")
     else:
-        print("Invalid")
-        return 
+        print("Invalid input")
+        return
     mismatch = find_mismatch(text)
     # Printing answer, write your code here
     print(mismatch)
