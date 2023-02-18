@@ -28,19 +28,15 @@ def find_mismatch(text):
 
 
 def main():
-    user_input = input("Choose 'F' for file or 'I' for user input: ")
-    if user_input == "F":
-        filename = input("Enter file path: ")
-        try:
-            with open(filename) as f:
-                text = f.read()
-        except FileNotFoundError:
-            print("File not found.")
-            return
-    elif user_input == "I":
-        text = input("Enter brackets: ")
+    input_type = input("Choose 'F' to input from file or 'I' to input from keyboard: ")
+    if input_type == "F":
+        filename = input("Enter the filename: ")
+        with open(filename, "r") as file:
+            text = file.read()
+    elif input_type == "I":
+        text = input("Enter the text: ")
     else:
-        print("Invalid input.")
+        print("Invalid input type.")
         return
 
     mismatch = find_mismatch(text)
