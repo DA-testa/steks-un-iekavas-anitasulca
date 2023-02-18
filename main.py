@@ -26,7 +26,17 @@ def find_mismatch(text):
         return opening_brackets_stack[0].position
     return" Success"
                 
-            #pass
+def input_letter():
+    input_type=input("Choose type of input= F for file OR I for user input:")
+    if input_type.lower()=="f":
+        file_name=input("Enter file name")
+        with open(file_name,"r") as f:
+            return f.read().strip()
+    elif input_type.lower()=="i":
+        return input ("Enter brackets:")
+    else:
+        print("File type not found")
+        exit()
 
 
 def main():
