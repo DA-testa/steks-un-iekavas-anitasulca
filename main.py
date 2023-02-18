@@ -28,22 +28,35 @@ def find_mismatch(text):
 
 
 def main():
-    letter = input("Choose (F) to input file path or (I) to input text: ")
-    if letter.strip().lower() == "f":
-        path = input("Enter file path: ")
-        if os.path.exists(path):
-            with open(path, "r") as f:
-                text = f.read()
-                mismatch = find_mismatch(text)
-                print(mismatch)
-        else:
-            print("Invalid file path!")
-    elif letter.strip().lower() == "i":
+    input_choice = input("Enter F to read from file or I to input your own text: ")
+    if input_choice == "F":
+        filename = input("Enter file name: ")
+        with open(filename, "r") as f:
+            text = f.read()
+    elif input_choice == "I":
         text = input("Enter text: ")
-        mismatch = find_mismatch(text)
-        print(mismatch)
     else:
-        print("Invalid choice!")
+        print("Invalid input choice. Please try again.")
+        return
+    mismatch = find_mismatch(text)
+    # Printing answer, write your code here
+    print(mismatch)
+   # letter = input("Choose (F) to input file path or (I) to input text: ")
+    #if letter.strip().lower() == "f":
+      #  path = input("Enter file path: ")
+       # if os.path.exists(path):
+           # with open(path, "r") as f:
+             #   text = f.read()
+             #   mismatch = find_mismatch(text)
+             #   print(mismatch)
+   #    else:
+#print("Invalid file path!")
+   # elif letter.strip().lower() == "i":
+      #  text = input("Enter text: ")
+      #  mismatch = find_mismatch(text)
+       # print(mismatch)
+  #  else:
+      #  print("Invalid input")
 
 
     #text=input()
