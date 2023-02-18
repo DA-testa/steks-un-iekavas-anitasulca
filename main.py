@@ -28,20 +28,8 @@ def find_mismatch(text):
 
 
 def main():
-    letter = input ("Choose input type- F for file OR I for input:")
-    if letter == "F":
-        filename=input("Enter file name :")
-        if os.path.exists(filename):
-            with open (filename, 'r') as f:
-                text=f.read()
-        else:
-            print ("File not found")
-            return
-    elif letter == "I":
-         text = input("Enter the file name with brackets:")
-    else:
-        print("Invalid letter")
-        return
+    
+    text = input()
     mismatch = find_mismatch(text)
     # Printing answer, write your code here
     print(mismatch)
